@@ -1,0 +1,25 @@
+//Startup Configuration
+Switch>enable
+Switch#configure terminal 
+Switch(config)#hostname C_DL_L3_S1
+
+//Enable IPv6 Routing
+C_DL_L3_S1(config)#ipv6 unicast-routing
+
+//Vlan Configuration
+C_DL_L3_S1(config)#vlan 50
+C_DL_L3_S1(config-vlan)#name management
+C_DL_L3_S1(config-vlan)#vlan 100
+C_DL_L3_S1(config-vlan)#name resources usage
+C_DL_L3_S1(config-vlan)#vlan 150
+C_DL_L3_S1(config-vlan)#name voice
+C_DL_L3_S1(config-vlan)#vlan 96
+C_DL_L3_S1(config-vlan)#name security
+C_DL_L3_S1(config-vlan)#vlan 128
+C_DL_L3_S1(config-vlan)#name it
+C_DL_L3_S1(config-vlan)#vlan 160
+C_DL_L3_S1(config-vlan)#name finance
+C_DL_L3_S1(config-vlan)#vlan 176
+C_DL_L3_S1(config-vlan)#name hr
+C_DL_L3_S1(config-vlan)#vlan 200
+C_DL_L3_S1(config-vlan)#name native

@@ -1,0 +1,7 @@
+C_CL_R:- Cotelino Core Layer Router
+C_DL_L3_S1:- Cotelino Distribution Layer 3 Switch 1
+C_DL_L3_S2:- Cotelino Distribution Layer 3 Switch 2
+C_AL_L2_S1:- Cotelino Access Layer 2 Switch 1
+C_AL_L2_S2:- Cotelino Access Layer 2 Switch 2
+C_AL_L2_S3:- Cotelino Access Layer 2 Switch 3
+C_AL_L2_S4:- Cotelino Access Layer 2 Switch 4

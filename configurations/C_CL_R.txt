@@ -1,0 +1,111 @@
+//Startup Configuration
+Router>enable
+Router#configure terminal
+Router(config)#hostname C_CL_R
+
+//Enable IPv6 Routing
+C_CL_R(config)#ipv6 unicast-routing
+
+//IPv4 DHCP Pool Configuration
+C_CL_R(config)#ip dhcp excluded-address 10.5.2.24 10.5.2.30
+C_CL_R(config)#ip dhcp excluded-address 10.5.2.56 10.5.2.62
+C_CL_R(config)#ip dhcp excluded-address 10.5.2.88 10.5.2.94
+C_CL_R(config)#ip dhcp excluded-address 10.5.2.120 10.5.2.126
+C_CL_R(config)#ip dhcp excluded-address 10.5.2.152 10.5.2.158
+C_CL_R(config)#ip dhcp excluded-address 10.5.2.168 10.5.2.174
+C_CL_R(config)#ip dhcp excluded-address 10.5.2.184 10.5.2.190
+C_CL_R(config)#ip dhcp excluded-address 10.5.2.200 10.5.2.206
+C_CL_R(config)#ip dhcp pool management
+C_CL_R(dhcp-config)#network 10.5.2.0 255.255.255.224
+C_CL_R(dhcp-config)#default-router 10.5.2.30
+C_CL_R(dhcp-config)#ip dhcp pool usage
+C_CL_R(dhcp-config)#network 10.5.2.32 255.255.255.224
+C_CL_R(dhcp-config)#default-router 10.5.2.62
+C_CL_R(dhcp-config)#ip dhcp pool voice
+C_CL_R(dhcp-config)#network 10.5.2.64 255.255.255.224
+C_CL_R(dhcp-config)#default-router 10.5.2.94
+C_CL_R(dhcp-config)#ip dhcp pool security
+C_CL_R(dhcp-config)#network 10.5.2.96 255.255.255.224
+C_CL_R(dhcp-config)#default-router 10.5.2.126
+C_CL_R(dhcp-config)#ip dhcp pool it
+C_CL_R(dhcp-config)#network 10.5.2.128 255.255.255.224
+C_CL_R(dhcp-config)#default-router 10.5.2.158
+C_CL_R(dhcp-config)#ip dhcp pool finance
+C_CL_R(dhcp-config)#network 10.5.2.160 255.255.255.240
+C_CL_R(dhcp-config)#default-router 10.5.2.174
+C_CL_R(dhcp-config)#ip dhcp pool hr
+C_CL_R(dhcp-config)#network 10.5.2.176 255.255.255.240
+C_CL_R(dhcp-config)#default-router 10.5.2.190
+
+//IPv6 DHCP Pool Configuration
+C_CL_R(config)#ipv6 dhcp pool management
+C_CL_R(config-dhcpv6)#address prefix 2001:adb8:85a3:0000::/64
+C_CL_R(config-dhcpv6)#domain-name cotelino.com
+C_CL_R(config-dhcpv6)#ipv6 dhcp pool usage
+C_CL_R(config-dhcpv6)#address prefix 2001:adb8:85a3:0001::/64
+C_CL_R(config-dhcpv6)#domain-name cotelino.com
+C_CL_R(config-dhcpv6)#ipv6 dhcp pool voice
+C_CL_R(config-dhcpv6)#address prefix 2001:adb8:85a3:0002::/64
+C_CL_R(config-dhcpv6)#domain-name cotelino.com
+C_CL_R(config-dhcpv6)#ipv6 dhcp pool security
+C_CL_R(config-dhcpv6)#address prefix 2001:adb8:85a3:0003::/64
+C_CL_R(config-dhcpv6)#domain-name cotelino.com
+C_CL_R(config-dhcpv6)#ipv6 dhcp pool it
+C_CL_R(config-dhcpv6)#address prefix 2001:adb8:85a3:0004::/64
+C_CL_R(config-dhcpv6)#domain-name cotelino.com
+C_CL_R(config-dhcpv6)#ipv6 dhcp pool finance
+C_CL_R(config-dhcpv6)#address prefix 2001:adb8:85a3:0005::/64
+C_CL_R(config-dhcpv6)#domain-name cotelino.com
+C_CL_R(config-dhcpv6)#ipv6 dhcp pool hr
+C_CL_R(config-dhcpv6)#address prefix 2001:adb8:85a3:0006::/64
+C_CL_R(config-dhcpv6)#domain-name cotelino.com
+
+//IPv4 Subinterface Configuration
+C_CL_R(config)#interface gigabitEthernet 0/0/0.50
+C_CL_R(config-subif)#ip address 10.5.2.30 255.255.255.224
+C_CL_R(config-subif)#encapsulation dot1Q 50
+C_CL_R(config-subif)#description management vlan interface
+C_CL_R(config-subif)#interface gigabitEthernet 0/0/0.100
+C_CL_R(config-subif)#encapsulation dot1Q 100
+C_CL_R(config-subif)#ip address 10.5.2.62 255.255.255.224
+C_CL_R(config-subif)#description usage vlan interface
+C_CL_R(config-subif)#interface gigabitEthernet 0/0/0.150
+C_CL_R(config-subif)#encapsulation dot1Q 150
+C_CL_R(config-subif)#ip address 10.5.2.94 255.255.255.224
+C_CL_R(config-subif)#description voice vlan interface
+C_CL_R(config-subif)#interface gigabitEthernet 0/0/0.96
+C_CL_R(config-subif)#encapsulation dot1Q 96
+C_CL_R(config-subif)#ip address 10.5.2.126 255.255.255.224
+C_CL_R(config-subif)#description security vlan interface
+C_CL_R(config-subif)#exit
+C_CL_R(config)#interface gigabitEthernet 0/0/1.128
+C_CL_R(config-subif)#encapsulation dot1Q 128
+C_CL_R(config-subif)#ip address 10.5.2.158 255.255.255.224
+C_CL_R(config-subif)#description it vlan interface
+C_CL_R(config-subif)#interface gigabitEthernet 0/0/1.160
+C_CL_R(config-subif)#encapsulation dot1Q 160
+C_CL_R(config-subif)#ip address 10.5.2.174 255.255.255.240
+C_CL_R(config-subif)#description finance vlan interface
+C_CL_R(config-subif)#interface gigabitEthernet 0/0/1.176
+C_CL_R(config-subif)#encapsulation dot1Q 176
+C_CL_R(config-subif)#ip address 10.5.2.190 255.255.255.240
+C_CL_R(config-subif)#description hr vlan interface
+C_CL_R(config-subif)#interface gigabitEthernet 0/0/1.200
+C_CL_R(config-subif)#encapsulation dot1Q 200 native
+C_CL_R(config-subif)#ip address 10.5.2.206 255.255.255.240
+C_CL_R(config-subif)#description native vlan interface
+C_CL_R(config-subif)#exit
+C_CL_R(config)#interface gigabitEthernet 0/0/0
+C_CL_R(config-if)#no shutdown
+C_CL_R(config-if)#exit
+C_CL_R(config)#interface gigabitEthernet 0/0/1
+C_CL_R(config-if)#no shutdown
+C_CL_R(config-if)#exit
+
+
+
+
+
+
+
+

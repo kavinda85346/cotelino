@@ -1,0 +1,26 @@
+//Startup Configuration
+Switch>enable
+Switch#configure terminal 
+Switch(config)#hostname C_AL_L2_S3
+
+//Enable IPv6 Routing
+C_AL_L2_S3(config)#sdm prefer dual-ipv4-and-ipv6 default
+C_AL_L2_S3(config)#ipv6 unicast-routing
+
+//Vlan Configuration
+C_AL_L2_S3(config)#vlan 50
+C_AL_L2_S3(config-vlan)#name management
+C_AL_L2_S3(config-vlan)#vlan 100
+C_AL_L2_S3(config-vlan)#name resources usage
+C_AL_L2_S3(config-vlan)#vlan 150
+C_AL_L2_S3(config-vlan)#name voice
+C_AL_L2_S3(config-vlan)#vlan 96
+C_AL_L2_S3(config-vlan)#name security
+C_AL_L2_S3(config-vlan)#vlan 128
+C_AL_L2_S3(config-vlan)#name it
+C_AL_L2_S3(config-vlan)#vlan 160
+C_AL_L2_S3(config-vlan)#name finance
+C_AL_L2_S3(config-vlan)#vlan 176
+C_AL_L2_S3(config-vlan)#name hr
+C_AL_L2_S3(config-vlan)#vlan 200
+C_AL_L2_S3(config-vlan)#name native
